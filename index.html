@@ -9,24 +9,31 @@
 </head>
 <body>
 
-<nav>
-  <div class="nav-container">
-    <div class="nav-links">
-      <a href="#" data-section="home">@JamiieDev </a>
-      <a href="#" data-section="othergames">Games</a>
-      <a href="#" data-section="animations">Animations</a>
-      <a href="#" data-section="experimental">Experimental</a>
-      <a href="#" data-section="aboutme">About Me</a>
+  <nav>
+    <div class="nav-container">
+      <!-- HAMBURGER ICON (hidden on desktop, shown on mobile) -->
+      <div class="hamburger" id="hamburger">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+      
+      <!-- NAV LINKS (will be toggled on mobile) -->
+      <div class="nav-links" id="navLinks">
+        <!-- Regular site navigation links -->
+        <a href="#" data-section="home">Home</a>
+        <a href="#" data-section="othergames">Games</a>
+        <a href="#" data-section="animations">Animations</a>
+        <a href="#" data-section="experimental">Experimental</a>
+        <a href="#" data-section="aboutme">@JamiieDev</a>
+  
+        <!-- Social Icons moved here so they appear in the dropdown -->
+        <a href="https://www.instagram.com/jamiiedev" title="Instagram">📷</a>
+        <a href="https://www.youtube.com/channel/UCHs60FguAIXjefsRbsEgEYQ?sub_confirmation=1" title="YouTube">▶️</a>
+        <a href="https://jamiiethetrashman.itch.io" title="Itch.io">🎮</a>
+      </div>
     </div>
-    <div class="nav-icons">
-      <!-- Replace # with actual links -->
-      <a href="https://www.instagram.com/jamiiedev" title="Instagram">📷</a>
-      <a href="https://www.youtube.com/channel/UCHs60FguAIXjefsRbsEgEYQ?sub_confirmation=1" title="YouTube">▶️</a>
-      <a href="https://jamiiethetrashman.itch.io" title="Itch.io">🎮</a>
-    </div>
-  </div>
-</nav>
-
+  </nav>
 <div class="section-container">
   <!-- HOME SECTION -->
   <section id="home" class="active">

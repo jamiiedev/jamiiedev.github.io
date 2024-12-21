@@ -287,9 +287,59 @@ html, body {
     animation: up_down-wiggle 0.5s ease-in-out infinite alternate;
   }
   
+/* HAMBURGER ICON */
+.hamburger {
+  display: none; /* Hidden by default (desktop view) */
+  flex-direction: column;
+  cursor: pointer;
+  /* If you want to position it to the left or right, add top or left offsets here */
+}
 
-  /* Example: If screen is 768px wide or smaller */
+.hamburger .line {
+  width: 25px;
+  height: 3px;
+  background-color: #fff;
+  margin: 4px 0;
+  transition: all 0.3s ease;
+}
+
+/* When hamburger is 'active', you could rotate lines for an 'X' icon if desired. 
+   This is optional fancy styling. */
+.hamburger.active .line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburger.active .line:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active .line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* NAV LINKS - Desktop View */
+.nav-links {
+  display: flex;  /* normal horizontal menu by default on desktop */
+  gap: 20px;
+}
+
+/* MOBILE STYLES (max-width: 768px) */
 @media (max-width: 768px) {
+  /* Show the hamburger, hide the .nav-links initially */
+  .hamburger {
+    display: flex;
+  }
+  
+  .nav-links {
+    display: none; /* hide links by default on mobile */
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px; 
+  }
+
+  /* When .nav-links has 'open' class, show the links */
+  .nav-links.open {
+    display: flex;
+  }
+
   nav {
     height: auto; /* Let nav grow in height as links stack */
     padding: 10px 20px; /* Add a bit of padding */
@@ -301,12 +351,7 @@ html, body {
     max-width: 100%; /* Remove fixed max-width if you want full width */
   }
 
-  .nav-links {
-    display: flex;
-    flex-direction: column; 
-    gap: 10px;
-    margin-bottom: 10px; /* Spacing below the links */
-  }
+
 
   .nav-links a {
     /* Slightly larger padding or smaller font if needed */
