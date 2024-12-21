@@ -13,7 +13,12 @@ html, body {
     color: #ffffff;
   }
   
-
+  .content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
   
   body {
     position: relative;
@@ -161,7 +166,7 @@ html, body {
   
   @media(min-width:768px){
     .grid {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
     }
   }
   
@@ -197,7 +202,10 @@ html, body {
   
   /* If needed, you can remove or comment out the image hover scaling rule entirely. */
 
+
+
   .item button {
+    margin-top: auto;                /* Takes up leftover vertical space, pushes button down */
     background: #333;
     color: #ccc;
     border: 1px solid #555;
@@ -205,8 +213,8 @@ html, body {
     font-size: 1em;
     cursor: pointer;
     transition: background 0.3s, color 0.3s ease;
-    margin-top: 10px;
-    font-family: 'Courier Prime', monospace; /* Matches your page font */
+    margin-bottom: 0;               /* Ensure no extra space below */
+    font-family: 'Courier Prime', monospace; /* match page font */
   }
 
   .item button:hover {
