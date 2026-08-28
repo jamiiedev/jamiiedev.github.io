@@ -152,6 +152,17 @@ Playtesting thanks to the FAMU community
 Made at FAMU, Prague
 
 
+MEDIA IN THIS KIT
+----------------
+- 14 screenshots (images/, 1920x1080; the two pickling shots pixel-scaled
+  from a work-in-progress capture)
+- Logo (transparent PNG), key art, vertical poster, tendril banner, icon
+- 5 looping clips (media/), each as an optimised GIF and a smaller MP4:
+  pickling a jar, squirrels in the patch, something in the soil,
+  the pickles talk, the photo wall
+- No gameplay trailer yet
+
+
 PERMISSIONS
 -----------
 You have blanket permission to use OKUREK's name, logo, screenshots, key art

@@ -163,6 +163,15 @@
   .grid-ss a:hover img { transform: scale(1.04); }
   .hint { color: var(--muted); font-size: 12.5px; margin-top: 10px; }
 
+  /* gifs / loops */
+  .grid-gif { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+  .grid-gif figure { margin: 0; border: 1px solid var(--line); background: var(--panel-2); }
+  .grid-gif video { width: 100%; display: block; background: #000; }
+  .grid-gif figcaption { padding: 10px 12px; font-size: 12.5px; color: var(--muted); }
+  .grid-gif figcaption b { color: var(--ink); display: block; font-size: 13px; margin-bottom: 3px; }
+  .grid-gif .dl { display: block; margin-top: 7px; }
+  .grid-gif .dl a { font-size: 12px; margin-right: 12px; }
+
   /* asset lists */
   .assets { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
   .asset {
@@ -197,6 +206,7 @@
       <a href="#about">About</a>
       <a href="#features">Features</a>
       <a href="#screenshots">Screenshots</a>
+      <a href="#gifs">GIFs</a>
       <a href="#assets">Assets</a>
       <a href="#downloads">Download</a>
       <a href="https://store.steampowered.com/app/4735450/OKUREK/" target="_blank" rel="noopener">Steam ↗</a>
@@ -306,6 +316,38 @@
     <p class="hint">Click any image for full resolution. The two pickling shots are pixel-scaled from a 360p capture; the rest are 1920×1080, captured in-engine from the current build. A gameplay trailer will be added here when it's ready.</p>
   </section>
 
+  <section id="gifs">
+    <h2>GIFs &amp; loops</h2>
+    <p>Silent looping clips for social posts and articles. Each comes as an optimised <strong>GIF</strong> and a much smaller <strong>MP4</strong> — use the MP4 wherever the platform accepts video (it's roughly 5× lighter). Captured from a work-in-progress build.</p>
+    <div class="grid-gif">
+      <figure>
+        <video src="media/okurek-pickling.mp4" poster="media/okurek-pickling.poster.jpg" autoplay loop muted playsinline preload="metadata"></video>
+        <figcaption><b>Pickling a jar</b>Add the cucumbers, boil the jar, back on the shelf it goes.
+          <span class="dl"><a href="media/okurek-pickling.gif" download>GIF · 2.2 MB</a><a href="media/okurek-pickling.mp4" download>MP4 · 0.4 MB</a></span></figcaption>
+      </figure>
+      <figure>
+        <video src="media/okurek-squirrels.mp4" poster="media/okurek-squirrels.poster.jpg" autoplay loop muted playsinline preload="metadata"></video>
+        <figcaption><b>Squirrels in the patch</b>They are stealing the cucumbers. The pickles are not happy about it.
+          <span class="dl"><a href="media/okurek-squirrels.gif" download>GIF · 3.6 MB</a><a href="media/okurek-squirrels.mp4" download>MP4 · 0.6 MB</a></span></figcaption>
+      </figure>
+      <figure>
+        <video src="media/okurek-corrupted-crop.mp4" poster="media/okurek-corrupted-crop.poster.jpg" autoplay loop muted playsinline preload="metadata"></video>
+        <figcaption><b>Something in the soil</b>A tangle of vine erupts out of a bed and won't stop growing.
+          <span class="dl"><a href="media/okurek-corrupted-crop.gif" download>GIF · 3.9 MB</a><a href="media/okurek-corrupted-crop.mp4" download>MP4 · 0.7 MB</a></span></figcaption>
+      </figure>
+      <figure>
+        <video src="media/okurek-talking-pickle.mp4" poster="media/okurek-talking-pickle.poster.jpg" autoplay loop muted playsinline preload="metadata"></video>
+        <figcaption><b>The pickles talk</b>Old Brine has some thoughts on how things used to be.
+          <span class="dl"><a href="media/okurek-talking-pickle.gif" download>GIF · 3.3 MB</a><a href="media/okurek-talking-pickle.mp4" download>MP4 · 0.9 MB</a></span></figcaption>
+      </figure>
+      <figure>
+        <video src="media/okurek-photo-wall.mp4" poster="media/okurek-photo-wall.poster.jpg" autoplay loop muted playsinline preload="metadata"></video>
+        <figcaption><b>The photo wall</b>Every picture you take with the camera ends up pinned here.
+          <span class="dl"><a href="media/okurek-photo-wall.gif" download>GIF · 2.6 MB</a><a href="media/okurek-photo-wall.mp4" download>MP4 · 0.5 MB</a></span></figcaption>
+      </figure>
+    </div>
+  </section>
+
   <section id="assets">
     <h2>Logo &amp; key art</h2>
     <div class="assets">
@@ -353,7 +395,7 @@
 
   <section id="downloads">
     <h2>Downloads &amp; permissions</h2>
-    <p><a class="btn primary" href="okurek-presskit.zip" download>⬇ Full press kit (.zip)</a> &nbsp; <span class="hint">— logo, key art, poster, banner, icon, all 12 screenshots, and this fact sheet as text.</span></p>
+    <p><a class="btn primary" href="okurek-presskit.zip" download>⬇ Full press kit (.zip)</a> &nbsp; <span class="hint">— logo, key art, poster, banner, icon, all 14 screenshots, the 5 GIF/MP4 loops, and this fact sheet as text.</span></p>
     <p style="margin-top:20px">You have blanket permission to use OKUREK's name, logo, screenshots, key art and video captured from the game in articles, reviews, videos and streams — <strong>including monetised ones</strong>. No need to ask. If you make something, <a href="mailto:jamiiedev.public@gmail.com">a link is always appreciated</a>.</p>
   </section>
 
