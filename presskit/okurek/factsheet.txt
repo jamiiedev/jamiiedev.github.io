@@ -35,7 +35,7 @@ Engine
     Godot 4.5
 
 Genre
-    First-person folk-horror farming game / atmospheric walking sim
+    First-person cozy-horror farming game / atmospheric walking sim
 
 Setting
     An isolated homestead in the sandstone hills of Czech Switzerland
@@ -55,6 +55,9 @@ Press contact
     jamiiedev.public@gmail.com
 
 Social
+    Bluesky     https://bsky.app/profile/jamiiedev.bsky.social
+    X / Twitter https://x.com/JamiieDev
+    TikTok      https://www.tiktok.com/@jamiiedev
     Instagram   https://www.instagram.com/jamiiedev
     YouTube     https://www.youtube.com/channel/UCHs60FguAIXjefsRbsEgEYQ
     itch.io     https://jamiiethetrashman.itch.io
@@ -134,7 +137,7 @@ leach-mining fields and consulted with a regional specialist for historical
 and environmental authenticity; the industrial structures in the game are an
 artistic interpretation where documentation no longer exists.
 
-Folk horror inspired by: Color Out of Space, Annihilation, No One Lives Under
+Cozy horror inspired by: Color Out of Space, Annihilation, No One Lives Under
 the Lighthouse.
 Plays like: What Remains of Edith Finch, Paratopic, Iron Lung, Squirrel
 Stapler, Anatomy.
