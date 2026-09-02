@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>OKUREK — Translation Guide</title>
+<meta name="description" content="Translation &amp; localization guide for OKUREK, a cozy-pickle-horror game by JamiieDev. Story, themes, style rules, formatting notes and a voice card for every character. For translators working from the English pivot text." />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="OKUREK — Translation Guide" />
+<meta property="og:description" content="What the game is, how each character talks, and what a translator is allowed to change. The game is serious; the writing is silly." />
+<meta property="og:image" content="https://jamiiedev.github.io/presskit/okurek/images/okurek-keyart.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@JamiieDev" />
+<meta name="robots" content="noindex" />
+
+<link rel="icon" href="/presskit/okurek/images/okurek-icon.png" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&amp;display=swap" />
+<style>
+  :root {
+    --bg: #0a0a0b;
+    --panel: #141416;
+    --panel-2: #1b1b1e;
+    --line: #2e2e33;
+    --ink: #ececec;
+    --muted: #9a9a9f;
+    --green: #8bc34a;
+    --gold: #e8c341;
+    --rot: #9b59b6;
+    --blood: #c0392b;
+    --nurse: #54ffea;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background: linear-gradient(to top, #121214, #000);
+    color: var(--ink);
+    font-family: 'Courier Prime', 'Courier New', monospace;
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  a { color: var(--gold); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 22px; }
+
+  strong, b { color: #fff; }
+  em { color: #d7d7d7; }
+
+  code {
+    font-family: inherit;
+    font-size: 0.92em;
+    background: rgba(255,255,255,0.055);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 0 4px;
+    color: var(--gold);
+    white-space: nowrap;
+  }
+  code.tok { color: var(--green); background: rgba(139,195,74,0.10); border-color: rgba(139,195,74,0.3); }
+  code.warn { color: #e79b8f; background: rgba(192,57,43,0.12); border-color: rgba(192,57,43,0.35); }
+
+  /* ---- top bar ---- */
+  header.bar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(6,6,7,0.93);
+    border-bottom: 1px solid var(--line);
+    backdrop-filter: blur(4px);
+  }
+  .bar .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    min-height: 54px;
+    flex-wrap: wrap;
+  }
+  .bar .brand { font-weight: 700; letter-spacing: 1px; color: var(--ink); white-space: nowrap; }
+  .bar .brand span { color: var(--green); }
+  .bar nav { display: flex; gap: 16px; flex-wrap: wrap; justify-content: flex-end; }
+  .bar nav a { color: var(--muted); font-size: 13px; }
+  .bar nav a:hover { color: var(--ink); text-decoration: none; }
+
+  /* ---- hero ---- */
+  .hero {
+    border-bottom: 1px solid var(--line);
+    background: #000 center / cover no-repeat;
+    background-image:
+      linear-gradient(to bottom, rgba(5,5,6,0.62), rgba(5,5,6,0.82) 55%, rgba(5,5,6,0.95)),
+      url('/presskit/okurek/images/okurek-hero.jpg');
+  }
+  .hero .wrap { padding: 54px 22px 46px; }
+  .hero .kicker { color: var(--green); letter-spacing: 3px; text-transform: uppercase; font-size: 12px; margin: 0 0 10px; }
+  .hero .kicker::before { content: "// "; color: var(--muted); }
+  .hero h1 { margin: 0; font-size: 30px; line-height: 1.25; letter-spacing: 0.5px; }
+  .hero .tagline { margin: 16px 0 0; max-width: 680px; color: #d7d7d7; }
+  .hero .pivot {
+    margin: 20px 0 0;
+    max-width: 680px;
+    border-left: 3px solid var(--green);
+    padding: 6px 0 6px 16px;
+    color: #d7d7d7;
+  }
+  .hero .meta { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 8px 10px; }
+  .hero .meta span {
+    border: 1px solid var(--line);
+    background: rgba(0,0,0,0.4);
+    padding: 3px 10px;
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: lowercase;
+  }
+
+  /* ---- doc layout ---- */
+  .doc { display: grid; grid-template-columns: 214px 1fr; gap: 40px; align-items: start; padding-top: 34px; padding-bottom: 20px; }
+
+  .toc { position: sticky; top: 72px; font-size: 13px; }
+  .toc .toc-head { color: var(--muted); letter-spacing: 2px; text-transform: uppercase; font-size: 11px; margin-bottom: 10px; }
+  .toc nav { display: flex; flex-direction: column; gap: 2px; border-left: 1px solid var(--line); }
+  .toc nav a { color: var(--muted); padding: 3px 0 3px 12px; margin-left: -1px; border-left: 1px solid transparent; line-height: 1.35; }
+  .toc nav a:hover { color: var(--ink); text-decoration: none; }
+  .toc nav a.active { color: var(--green); border-left-color: var(--green); }
+  .toc .toc-note { margin-top: 16px; color: var(--muted); font-size: 12px; line-height: 1.5; }
+
+  .content { min-width: 0; max-width: 46rem; }
+  .content > section { padding: 30px 0 34px; border-bottom: 1px solid var(--line); }
+  .content > section:first-of-type { padding-top: 0; }
+
+  h2 { margin: 0 0 18px; font-size: 15px; letter-spacing: 3px; text-transform: uppercase; color: var(--green); }
+  h2::before { content: "// "; color: var(--muted); }
+  h3 { margin: 26px 0 8px; font-size: 14px; color: var(--gold); letter-spacing: 0.5px; }
+  h4 { margin: 20px 0 6px; font-size: 13px; color: var(--ink); letter-spacing: 0.5px; text-transform: uppercase; }
+  p { margin: 0 0 14px; }
+  ul, ol { margin: 0 0 14px; padding-left: 22px; }
+  li { margin-bottom: 7px; }
+  ul.plain { list-style: none; padding-left: 0; }
+  ul.plain > li { position: relative; padding-left: 20px; }
+  ul.plain > li::before { content: "▸"; position: absolute; left: 0; color: var(--green); }
+
+  .callout {
+    border: 1px solid var(--green);
+    background: rgba(139,195,74,0.07);
+    padding: 12px 16px;
+    margin: 0 0 30px;
+    color: #e7f0da;
+  }
+  .callout b { color: var(--green); }
+
+  .k { color: var(--green); font-weight: 700; }
+  .f { color: var(--gold); font-weight: 700; }
+
+  /* tables */
+  .tbl { width: 100%; border: 1px solid var(--line); border-collapse: collapse; margin: 0 0 16px; font-size: 13.5px; }
+  .tbl th, .tbl td { text-align: left; vertical-align: top; padding: 8px 12px; border-bottom: 1px solid var(--line); }
+  .tbl th { background: var(--panel); color: var(--muted); text-transform: uppercase; letter-spacing: 1px; font-size: 11.5px; font-weight: 700; }
+  .tbl tr:last-child td, .tbl tbody tr:last-child td { border-bottom: 0; }
+  .tbl td:first-child { color: #fff; white-space: nowrap; }
+  .tbl td.wrap-cell:first-child { white-space: normal; }
+  .tbl-scroll { overflow-x: auto; }
+
+  /* pull quote / model lines */
+  blockquote.pull {
+    margin: 0 0 16px;
+    border-left: 3px solid var(--rot);
+    padding: 6px 0 6px 16px;
+    color: #cdb9d6;
+    font-style: italic;
+  }
+  .lines { margin: 10px 0 4px; display: flex; flex-direction: column; gap: 9px; }
+  .line {
+    margin: 0;
+    border-left: 3px solid var(--accent, var(--rot));
+    background: var(--panel-2);
+    padding: 8px 12px;
+    font-size: 13.5px;
+  }
+  .line .intent { display: block; margin-top: 4px; color: var(--muted); font-style: italic; font-size: 12.5px; }
+  .line .role { color: var(--muted); font-size: 11.5px; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 3px; }
+
+  /* spoiler */
+  details.spoiler { border: 1px solid var(--blood); background: rgba(192,57,43,0.06); margin: 4px 0 0; }
+  details.spoiler > summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 12px 16px;
+    color: #e79b8f;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+  details.spoiler > summary::-webkit-details-marker { display: none; }
+  details.spoiler > summary::before { content: "▸ "; }
+  details.spoiler[open] > summary::before { content: "▾ "; }
+  details.spoiler[open] > summary { border-bottom: 1px solid var(--blood); }
+  details.spoiler .spoiler-body { padding: 18px 16px 6px; }
+
+  /* character cards */
+  .card {
+    border: 1px solid var(--line);
+    border-top: 2px solid var(--accent, var(--green));
+    background: var(--panel);
+    padding: 16px 18px 14px;
+    margin: 0 0 16px;
+  }
+  .card > header { margin-bottom: 10px; }
+  .card > header h3 { margin: 0; font-size: 16px; color: var(--accent, var(--gold)); letter-spacing: 0.5px; }
+  .card > header .tags { display: block; margin-top: 3px; color: var(--muted); font-size: 12px; }
+  .card > header .tags code { font-size: 11px; }
+  .card dl { margin: 0; display: grid; grid-template-columns: 116px 1fr; gap: 0 14px; }
+  .card dt { color: var(--muted); font-size: 11.5px; text-transform: uppercase; letter-spacing: 1px; padding: 7px 0; border-top: 1px solid var(--line); }
+  .card dd { margin: 0; padding: 7px 0; border-top: 1px solid var(--line); }
+  .card dl > dt:first-of-type, .card dl > dt:first-of-type + dd { border-top: 0; }
+  .card dd ol, .card dd ul { margin: 6px 0 2px; }
+  .card dd p { margin: 0 0 8px; }
+
+  .checklist { list-style: none; padding-left: 0; }
+  .checklist li { padding-left: 26px; position: relative; }
+  .checklist li.done::before { content: "✓"; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+  .checklist li.todo::before { content: "☐"; position: absolute; left: 0; color: var(--gold); }
+
+  footer { padding: 30px 0 60px; color: var(--muted); font-size: 12.5px; text-align: center; border-top: 1px solid var(--line); }
+  footer a { color: var(--muted); }
+
+  .totop {
+    position: fixed; right: 18px; bottom: 18px; z-index: 40;
+    border: 1px solid var(--line); background: var(--panel-2); color: var(--ink);
+    width: 40px; height: 40px; display: grid; place-items: center;
+    font-size: 16px; opacity: 0; pointer-events: none; transition: opacity .25s;
+  }
+  .totop.show { opacity: 1; pointer-events: auto; }
+  .totop:hover { border-color: var(--gold); text-decoration: none; }
+
+  @media (max-width: 860px) {
+    .doc { grid-template-columns: 1fr; gap: 0; }
+    .toc {
+      position: static; margin-bottom: 24px;
+      border: 1px solid var(--line); background: var(--panel); padding: 12px 14px;
+    }
+    .toc nav { border-left: 0; }
+    .toc nav a { border-left: 0; padding-left: 0; }
+    .toc nav a.active { border-left: 0; }
+    .content { max-width: none; }
+    .card dl { grid-template-columns: 1fr; gap: 0; }
+    .card dt { border-top: 1px solid var(--line); padding-bottom: 0; }
+    .card dl > dt:first-of-type + dd { border-top: 0; }
+  }
+  @media (max-width: 520px) {
+    .hero h1 { font-size: 24px; }
+    .bar .brand { font-size: 12px; }
+  }
+</style>
+</head>
+<body id="top">
+
+<header class="bar">
+  <div class="wrap">
+    <div class="brand">O.K.U.R.E.K <span>// translation guide</span></div>
+    <nav>
+      <a href="/presskit/okurek/">← Press kit</a>
+      <a href="https://store.steampowered.com/app/4735450/OKUREK/" target="_blank" rel="noopener">Steam ↗</a>
+      <a href="/">jamiiedev ↩</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <p class="kicker">for translators</p>
+    <h1>Translation &amp; Localization Guide</h1>
+    <p class="tagline">O.K.U.R.E.K — a cozy-pickle-horror game set in the rotting mountains of Czech Switzerland. This page tells you what the game is, how every character talks, and what you're allowed to change.</p>
+    <p class="pivot"><strong>The English text is the pivot.</strong> Everyone else (中文 / Русский / Українська / Polski) translates from the English, not the Czech — so the English has to carry the <em>voice</em>: the goofiness, the emoticons, the register shifts, the melancholy under the jokes.</p>
+    <div class="meta">
+      <span>goofy</span><span>melancholic</span><span>absurd</span><span>outrageous</span>
+      <span>cozy</span><span>spooky</span><span>mind-altering</span>
+    </div>
+  </div>
+</div>
+
+<div class="doc wrap">
+  <aside class="toc">
+    <div class="toc-head">Contents</div>
+    <nav id="toc-nav">
+      <a href="#s1">1 · The game at a glance</a>
+      <a href="#s2">2 · Where I'm coming from</a>
+      <a href="#s3">3 · Setting &amp; history</a>
+      <a href="#s4">4 · Story, day by day <span style="color:var(--blood)">✦</span></a>
+      <a href="#s5">5 · Themes &amp; metaphors</a>
+      <a href="#s6">6 · Global style guide</a>
+      <a href="#s7">7 · Terminology / do-not-translate</a>
+      <a href="#s8">8 · Formatting &amp; tech rules</a>
+      <a href="#s9">9 · Character voice cards</a>
+      <a href="#s10">10 · Language-specific notes</a>
+      <a href="#s11">11 · Workflow &amp; reference</a>
+      <a href="#s12">12 · Open items (dev)</a>
+    </nav>
+    <div class="toc-note">Questions → text JamiieDev directly.</div>
+  </aside>
+
+  <main class="content">
+
+    <div class="callout"><b>The one rule:</b> the game is serious, the writing is silly. Keep that tension in every line.</div>
+
+    <section id="s1">
+      <h2>1 · The game at a glance</h2>
+      <table class="tbl">
+        <tr><td>Title</td><td class="wrap-cell"><strong>OKUREK</strong> — stylised on screen as <strong>O.K.U.R.E.K</strong> (with dots). Plain "OKUREK" (no dots) is used for store pages / SEO. <strong>Do not translate the title.</strong></td></tr>
+        <tr><td>Genre</td><td class="wrap-cell"><strong>COZY PICKLE HORROR.</strong> (Also fair: "folk horror.") It's a selling point — keep it punchy in every language, invent your own catchy 3-word version if a literal one falls flat.</td></tr>
+        <tr><td>Platform</td><td class="wrap-cell">PC, Steam.</td></tr>
+        <tr><td>Length</td><td class="wrap-cell">Full game = <strong>5 days</strong> + a bonus "Chicken Break". Demo = <strong>2 days + Chicken Break</strong>.</td></tr>
+        <tr><td>You translate</td><td class="wrap-cell">The first <strong>3 days</strong> (Day 0–Day 2, plus Chicken Break). Days 3–5 aren't in scope yet.</td></tr>
+        <tr><td>Perspective</td><td class="wrap-cell">First person. No visible body / hands.</td></tr>
+        <tr><td>Content</td><td class="wrap-cell">Environmental destruction, cancer / terminal illness (never named clinically), a dead rooster, mild body horror, grief. A sad game that is trying very hard to make you laugh.</td></tr>
+      </table>
+
+      <h3>Canonical short description</h3>
+      <p>Match this tone when you localise store copy:</p>
+      <blockquote class="pull">Tend the farm, the chickens, the grieving jars. The trees murmur while the cancer grows with every passing day. <strong>O.K.U.R.E.K</strong>: a COZY PICKLE HORROR experience set in the rotting mountains of Czech Switzerland. Preserve what you couldn't save.</blockquote>
+
+      <p><strong>Tone words:</strong> goofy · melancholic · absurd · outrageous · cozy · spooky · mind-altering.</p>
+    </section>
+
+    <section id="s2">
+      <h2>2 · Where I'm coming from</h2>
+      <p><em>You don't translate this section. It's context so your word choices land right.</em></p>
+
+      <p>OKUREK is a deliberate subversion of the "cozy farming sim" (think <em>Stardew Valley</em>). It attacks the fantasy that a person can, in the face of systemic and environmental collapse, successfully dissociate — retreat into their own routine and be safe there.</p>
+
+      <p>It works on two layers at once, and the player chooses how much to take in:</p>
+      <ul class="plain">
+        <li><strong>The historical / environmental layer:</strong> the systematic exploitation of the working class and of the land in northern Bohemia in the 1970s–80s — brown-coal strip mining and the chemical leaching of uranium. The system treats people and landscape as disposable consumable material. Irreversible ecological damage, fatal health consequences for locals.</li>
+        <li><strong>The psychological layer:</strong> a study of a mind coping with trauma. The defense mechanisms a person uses to distance themselves from a reality they can't bear, and to externalize responsibility onto someone, anyone, else.</li>
+      </ul>
+
+      <p><strong>The central refusal.</strong> I wrote an essay ("Lze hrát chudobu?" / "Can Poverty Be Played?") about Mark Fisher's idea that games about suffering tend to become a <em>safe emotional release valve</em> — the player performs anti-capitalism / grief / empathy for 90 minutes, feels cleansed, and goes back to their comfortable life unchanged. WALL-E does your environmentalism for you so you can keep consuming happily. I do not want OKUREK to be that valve.</p>
+
+      <p>So <strong>the game deliberately cannot have a real good ending:</strong></p>
+      <ul class="plain">
+        <li>One ending: you fight the monster and "win" your farm back — but it is permanently poisoned, acidic, dead. You've preserved a corpse.</li>
+        <li>The other ending: I step in <strong>as the narrator, speak my heart directly to the player, and the game ends</strong> — unresolved, forever open, never finished. I refuse to give catharsis, because catharsis here would be a lie that calms you down with a story that makes sense. (The "Last Words" content — see §4.)</li>
+      </ul>
+
+      <p>The game is <strong>not</strong> "the world is bad and everything sucks." It's the opposite: <strong>the world is interesting and worth looking at, and the question is what we can do to <em>not</em> hide from it.</strong></p>
+    </section>
+
+    <section id="s3">
+      <h2>3 · Setting &amp; history</h2>
+
+      <p><strong>Place.</strong> A small, isolated cucumber homestead in the mountains of northern Bohemia / "Czech Switzerland" (the white sandstone cliffs). It is <strong>not one real place</strong> — it's a composite, inspired by many locations in that region. Don't try to pin it to a specific town.</p>
+
+      <p><strong>Time.</strong> Late 1970s / 1980s. The in-game notes are dated 1978–79. The full story spans roughly <strong>two years</strong>, but the player experiences it as <strong>5 consecutive days</strong> — there's a time jump between each day. (Between Day 1 and Day 2, months pass. The player just wakes up "the next morning".)</p>
+
+      <p><strong>How much history do translators need?</strong> A lot of it is already written for you: the long documentary <strong>notes found in the world</strong> (uranium mining methods, the "Black Triangle", acid rain and the death of the mountain forests, worker health, resident health) are already in the CSV in full, in a formal period-bureaucratic register. Those texts <em>are</em> the history primer. Read them. Match their tone (§6). Real institution names are already fixed in English (<code>District Institute of National Health</code>, <code>Regional National Committee</code>, <code>Hamr I Mine</code>, <code>Stráž deposit</code>) — keep those consistent.</p>
+
+      <h4>Key facts the world is built on</h4>
+      <ul class="plain">
+        <li><strong>Uranium was extracted two ways at once:</strong> classic deep-shaft mining, <em>and</em> in-situ chemical leaching — pumping sulfuric and nitric acid into thousands of boreholes to dissolve uranium underground, then sucking the toxic solution back up. Locals feared the acid would reach the drinking water.</li>
+        <li><strong>The "Black Triangle"</strong> (NW Bohemia / Saxony / SW Poland) was one of the most polluted places on Earth. Coal plants with no desulfurization → sulfur dioxide → <strong>acid rain</strong> → whole mountain ranges of grey dead spruce stumps.</li>
+        <li><strong>Health:</strong> lung cancer from inhaled radon dust; silicosis from sandstone dust; chronic respiratory disease, chemical burns; measurably shorter life expectancy than the rest of the country; spikes in childhood asthma during winter smog inversions.</li>
+      </ul>
+
+      <p>The friend in the story dies of an illness of this kind. It is <strong>never named as "cancer" in dialogue</strong> — only the marketing copy says the word.</p>
+    </section>
+
+    <section id="s4">
+      <h2>4 · Story, day by day</h2>
+      <p>Translators only need <strong>Days 0–2 + Chicken Break</strong>, but read all of it so you know where the story is going.</p>
+      <details class="spoiler">
+        <summary>Spoilers — click to open the full plot</summary>
+        <div class="spoiler-body">
+
+        <p>You arrive to look after a friend's cucumber farm while they're away at the doctor. Over what feels like five days (really ~2 years) the routine falls apart, the friend dies, the land is consumed by mining and the Spoil, and the game refuses to let you feel okay about it.</p>
+
+        <h4>Day 0 — Arrival</h4>
+        <p>Travel in by bus. A telephone stands by the side of the road. You pick up your <strong>camera</strong>. Quiet.</p>
+
+        <h4>Day 1 — The routine</h4>
+        <p>Read the friend's instructions (the letter). Put seeds in the ground, water them. The water stops flowing → walk to the intake and unblock it. Darkness falls and the <strong>deer start screaming</strong> (the first DearHead prophecy). The day ends when you get home.</p>
+
+        <h4>Day 2 — The squirrels</h4>
+        <p><strong>Squirrels steal your cucumbers.</strong> You pickle whatever's left, then go out to find the stolen ones. <strong>The pickles talk</strong> (the five archetypes — see §9). It starts to rain; you can explore freely <em>until</em> the rain begins (soft time limit). If you go into the mine, you get your first look at the <strong>monster</strong> and some exposition. End of day.</p>
+
+        <h4>Day 3 — The chickens <em>(not in scope yet)</em></h4>
+        <p>In the middle of the night the monster takes the chickens. You go looking for them. The <strong>rooster was killed</strong>. You find more clues about the mining and about your friend's death.</p>
+
+        <h4>Day 4 — Industrialization arrives <em>(not in scope)</em></h4>
+        <p>The place is ruined. Huge pillars of smog on the horizon — industry has reached you. Everything is coated in dust. No chickens, nothing. You go to the final mine: exposition and <strong>bizarre visuals</strong> — rows of leaching pumps; <strong>cucumber-snails walking away with houses on their backs</strong> (migration / leaving / refugees).</p>
+
+        <h4>Day 5 — Ending <em>(not in scope)</em></h4>
+        <p>Branches on how you played:</p>
+        <ul class="plain">
+          <li><strong>If you engaged with the small acts of care</strong> → the <strong>epilogue with the deer</strong>: the narrator speaks directly, "Last Words", the game ends without resolution. <em>No boss fight.</em></li>
+          <li><strong>If you only wanted a horror game about pickles</strong> → the <strong>boss fight against the giant pickle monster</strong>, then the "bad" ending: you win the farm back, but it is dead forever.</li>
+        </ul>
+        <p><strong>What counts as "small acts of care" (the not-boss path):</strong> watering / looking after the flower · taking photos with the camera · calling the phone numbers you find in your phone · <strong>burying the rooster in a grave</strong> instead of putting it in a pickle jar or the chicken nest.</p>
+        <p><strong>"Last Words" / "Poslední slova"</strong> = the deer's closing monologue. In-fiction it's the deer; really it's me, the director, admitting I can't hand the player a clean catharsis and choosing to break that expectation on purpose. After this monologue <strong>the game permanently deletes the save / the game world</strong> — the point being that you don't change the real world by consuming a game, so the game refuses to sit there afterwards as a comfortable, finished object.</p>
+
+        <h4>Chicken Break</h4>
+        <p>A short, silly bonus. You see the world <strong>from a chicken's POV</strong> and the <strong>Amen break</strong> drum loop plays. Pure fun, no weight. Translate it loose and playful.</p>
+
+        </div>
+      </details>
+    </section>
+
+    <section id="s5">
+      <h2>5 · Themes &amp; metaphors</h2>
+
+      <p><strong>One sentence you must never lose sight of:</strong> it's a funny game with a depressing base — the player should feel <em>joy</em> in the dialogue and also learn something, without the game ever turning into "everything is awful".</p>
+
+      <p><strong>The central question, asked over and over:</strong> <em>Can we actually do anything about any of this? Can we?</em> The answer the game lands on: we are the people in history <strong>and</strong> we are the people now — the ones either doing nothing, or doing something.</p>
+
+      <h4>Translate these recurring ideas consistently (see §7)</h4>
+      <div class="tbl-scroll"><table class="tbl">
+        <tr><th>Thing</th><th>What it means</th></tr>
+        <tr><td class="wrap-cell">Pickling / preserving / jarring</td><td>Trying to hold a rotting, collapsing world in place. The belief that we can keep our dead friends as long as <em>we</em> don't change. Sticking your head in the ground and going numb to the world.</td></tr>
+        <tr><td class="wrap-cell">the Spoil (a.k.a. the tendrils / the rot)</td><td>The spread of the damage. Illness. The thing you cannot stop, only witness. See §7 for how to name it.</td></tr>
+        <tr><td class="wrap-cell">The deer / DearHead</td><td>The player-character's conscience — an externalized inner voice that can't be silenced or ignored. Also, at the very end, literally the director.</td></tr>
+        <tr><td class="wrap-cell">The squirrels (incl. two-headed ones)</td><td>The small, deniable first loss. "It's just nature." The mutation is already visible on them.</td></tr>
+        <tr><td class="wrap-cell">The talking pickles</td><td>A mirror of things real people have said to me about these issues — the ways we avoid responsibility. One enjoys it, one is clever about it but does nothing, one is angry and looks forward to a revolt that never comes.</td></tr>
+        <tr><td class="wrap-cell">The farm itself</td><td>The fantasy refuge. "A self-sufficient farm, where the world can't touch us." It doesn't hold.</td></tr>
+      </table></div>
+
+      <p>Deliberate ambiguity is fine to keep — don't "clarify" things the original leaves open.</p>
+    </section>
+
+    <section id="s6">
+      <h2>6 · Global style guide</h2>
+
+      <h3>The one rule</h3>
+      <p><strong>The game is serious. The translation is silly.</strong> Archaisms, goofy invented words, dumb little noises, exclamations from your grandma — yes, all of it. The horror and the sadness come from the <em>situation</em>, not from the prose being grim. If your translation reads as heavy and literary, you've missed.</p>
+
+      <h3>Emoticons — keep them</h3>
+      <p><code class="tok">:Ddd</code> <code class="tok">^^</code> <code class="tok">\:)</code> <code class="tok">:0</code> <code class="tok">:33</code> etc. carry emotion and character. <strong>Keep them.</strong></p>
+      <ul class="plain">
+        <li>Only the <strong>narrator / DearHead</strong> uses <code class="tok">:Ddd</code>.</li>
+        <li>Every other character may use whatever emoticon fits them — you have freedom here.</li>
+        <li>Note the backslash: <code class="tok">\:)</code> — the <code>\</code> is an escape and must stay (§8).</li>
+      </ul>
+
+      <h3>Swearing — there is none, keep it that way</h3>
+      <p>The Czech deliberately avoids real profanity. No "fuck", no hard swears in any language. <strong>Preferred instead:</strong> clever / soft curses, minced oaths, "what in the name of…", regional grandma-swears; whatever your language's equivalent of a <em>charming</em> curse is.</p>
+      <p>Sourpuss says <code>voe</code> (a softened, slurred "vole" — like "man" / "dude" / "mate" as a filler). Render it as a casual verbal tic, not an insult.</p>
+
+      <h3>Humor — you have full licence</h3>
+      <p>You may <strong>replace a joke entirely</strong> if a literal translation dies. The only rule: the new joke must make sense <em>for that character</em>. Sourpuss might make a fart joke; Sweetie never would. (See each voice card.)</p>
+
+      <h3>Register — reproduce the <em>contrast</em>, not the exact dialect</h3>
+      <p>The Czech uses <strong>obecná čeština</strong> (colloquial, "street" Czech) for some characters and standard Czech for others — "it gives it the juice." You can't reproduce the specific dialect, but you <strong>can and should</strong> reproduce the <em>gap</em>: keep the casual characters casual and sloppy, keep the formal / stately ones formal and stately.</p>
+
+      <h3>Sentence length</h3>
+      <p><strong>Short. Simple.</strong> Everyone except the deer speaks in short plain sentences. Don't smooth them into long ones.</p>
+
+      <h3>UI / interaction lines are spoken <em>by the player character</em></h3>
+      <p>Lines like "Can't carry any more <code class="tok">:/</code>" or "Can't get in without a key" are the player character muttering, not neutral system text. <strong>Keep them in-character</strong> in every language — it's part of the charm. Don't neutralize them into "Inventory full".</p>
+    </section>
+
+    <section id="s7">
+      <h2>7 · Terminology / do-not-translate</h2>
+
+      <h3>Cucumber vs. Pickle</h3>
+      <ul class="plain">
+        <li><strong>okurka = cucumber</strong> — the fresh fruit, on the vine, the thing you harvest and carry.</li>
+        <li><strong>okurek = pickle</strong> — the preserved thing in the jar, <em>and</em> what the talking ones are called.</li>
+      </ul>
+      <p>Use <em>cucumber</em> while it's alive / fresh, <em>pickle</em> once it's jarred or when referring to the talking characters as a group. (A talking one being turned to mush mid-process can still call itself a "cucumber".)</p>
+
+      <h3>The jarring vocabulary — keep it consistent</h3>
+      <div class="tbl-scroll"><table class="tbl">
+        <tr><th>Czech</th><th>English (use consistently)</th></tr>
+        <tr><td>zavařit / zavařovat</td><td>to pickle / to preserve / to can</td></tr>
+        <tr><td>naložit</td><td>to pickle (in brine)</td></tr>
+        <tr><td>zakonzervovat</td><td>to preserve / to seal away</td></tr>
+        <tr><td>sklenice / zavařovačka</td><td>jar</td></tr>
+        <tr><td class="wrap-cell"><strong>"zavařit si"</strong> (idiom)</td><td><strong>"to get (ourselves) into a pickle"</strong> / "a fine mess" — the pun is intended, e.g. <em>"Yay, we did it! We really got ourselves in a pickle."</em></td></tr>
+      </table></div>
+
+      <h3>The Spoil — the creeping corruption</h3>
+      <p>The phenomenon-as-a-named-thing is <strong>the Spoil</strong>. In ordinary description it's still fine to say something is <strong>rotting</strong> / <strong>spoiled</strong>, or to call it <strong>rot</strong>. The vine-like shapes it grows are <strong>tendrils</strong> (Czech <em>šlahouny</em>). For "the Spoil" in your language, find a word for <em>creeping spoilage / the turn (as milk turns) / going off / blight</em> — creepy but not clinical, and never "cancer". Run your choice past JamiieDev.</p>
+
+      <h3>Do NOT translate</h3>
+      <ul class="plain">
+        <li><strong>OKUREK / O.K.U.R.E.K</strong> (the title)</li>
+        <li><strong>JamiieDev</strong> (the developer's name / signature)</li>
+        <li><strong>Bílé skály</strong>, <strong>Hamr I</strong>, <strong>Stráž</strong>, and other real proper nouns (keep, optionally gloss)</li>
+        <li>Real institution names — use the fixed English already in the CSV</li>
+      </ul>
+
+      <h3>Recipe names — go funny</h3>
+      <p><code>Classic Dill Pickle</code>, <code>Pickled Fingers</code>, <code>Pickled Lung</code>, <code>The Loudest Jar</code>, <code>Mystery Pickle</code>, <code>Pickled Chicken</code>, <code>Pickled Eggs</code>. These are jokes. <strong>Localize for the laugh, not the letter.</strong> (The pickled "remains" NPCs — Miner / Middle Finger / Lung / "Lower One" — are pun jokes that mostly don't survive translation. Just call the miner "Miner" and don't stress the rest.)</p>
+    </section>
+
+    <section id="s8">
+      <h2>8 · Formatting &amp; tech rules</h2>
+      <p>The dialogue text contains <strong>inline tags</strong> and <strong>placeholders</strong>. If you break them, the line breaks in-game — sometimes silently.</p>
+
+      <div class="tbl-scroll"><table class="tbl">
+        <tr><th>Token</th><th>What it does</th><th>Rule</th></tr>
+        <tr><td><code class="tok">[input]</code></td><td>Waits for the player to click before the rest of the line appears. A <strong>dramatic beat / breath</strong>.</td><td>Keep it. You may <strong>move</strong> it to the equivalent pause point in your sentence. Don't delete it.</td></tr>
+        <tr><td><code class="tok">[lspeed=0.07]</code></td><td>Letter speed — how fast the text types out. Low = slow / deliberate.</td><td>Keep it, at the start of the line (or wherever it is). Don't change the number unless a slow-mo beat clearly needs to land on a different word.</td></tr>
+        <tr><td><code class="tok">[lspeed=0.2]</code> mid-line</td><td>A sudden slow-down for emphasis, e.g. <code>N-O L-E-G-S</code>.</td><td>Keep the effect on the equivalent emphasized word.</td></tr>
+        <tr><td><code class="tok">\:</code> <code class="tok">\:)</code> <code class="tok">\:Ddd</code></td><td>The <code>\</code> <strong>escapes</strong> the colon so Dialogic doesn't read <code>:)</code> as a command.</td><td><strong>Always keep the backslash</strong> before <code>:</code> in emoticons.</td></tr>
+        <tr><td><code class="tok">%s</code></td><td>Replaced by an item name, e.g. <code>Pick up %s</code> → "Pick up Cucumber".</td><td>Keep exactly one <code>%s</code>. Put it where the noun goes in your grammar. If your language needs the noun in a case the insertion can't provide, rephrase around it.</td></tr>
+        <tr><td><code class="tok">%d</code></td><td>Replaced by a number, e.g. <code>%d / %d removed</code>.</td><td>Keep both, in the right order.</td></tr>
+        <tr><td><code class="tok">{LMB}</code> <code class="tok">{RMB}</code> <code class="tok">{TAB}</code> <code class="tok">{C}</code> <code class="tok">{T}</code></td><td>Swapped for a control-key icon in the HUD.</td><td>Keep the token <strong>exactly</strong>, including braces and caps. Don't translate "LMB".</td></tr>
+        <tr><td>line breaks inside a cell</td><td>Real newlines in multi-line notes.</td><td>Keep the paragraph structure; you can re-break for your language.</td></tr>
+      </table></div>
+
+      <p><code class="warn">Never edit the .translation files</code> (<code>*.cs.translation</code>, <code>*.en.translation</code> …). They're compiled from the CSVs. Edit <strong>only the CSV</strong>.</p>
+
+      <h4>CSV column order differs between files</h4>
+      <ul class="plain">
+        <li><code>translations.csv</code> → <code>keys, en, cs, zh_CN, zh_TW, pl, ru, uk</code></li>
+        <li><code>dialogic_timeline_translations.csv</code> and <code>dialogic_character_translations.csv</code> → <code>keys, cs, en, zh_CN, zh_TW, pl, ru, uk</code> &nbsp;← <strong>cs first, then en</strong></li>
+      </ul>
+      <p><code>zh_TW</code>, <code>pl</code>, <code>ru</code>, <code>uk</code> currently contain the English text as a placeholder (English is the fallback locale). Replace the placeholder in <strong>your</strong> column. Don't touch <code>keys</code>, <code>cs</code>, or <code>en</code>. Don't reorder rows. Keep the blank separator rows. If a cell contains a comma or quote it must be wrapped in <code>"…"</code> (most editors do this automatically).</p>
+    </section>
+
+    <section id="s9">
+      <h2>9 · Character voice cards</h2>
+      <p>Each card: <strong>who · name · personality · how they talk · what they talk about · what they represent · <span class="k">keep</span> vs. <span class="f">flex</span> · model lines</strong>.</p>
+      <p>For every talking pickle: give it a <strong>fixed grammatical gender</strong> in your language (noted per card) and keep it consistent. Pickles <strong>can address the player directly</strong>, most often while being stuffed into a jar.</p>
+
+      <article class="card" style="--accent:#ff872a">
+        <header>
+          <h3>DearHead — the deer / the stag's head</h3>
+          <span class="tags">the conscience · genderless · <code>deer_prophet</code></span>
+        </header>
+        <dl>
+          <dt>Who</dt><dd>A deer (or just a deer's head) that appears at night. The player-character's conscience — an inner voice that can't be silenced or ignored. At the very end it stops being the deer and becomes the director speaking directly.</dd>
+          <dt>Name</dt><dd><strong>DearHead</strong> is canonical (deer + dear, and it's <strong>genderless</strong> — keep it genderless everywhere). Carry the deer/dear pun if your language lets you; if not, a name meaning roughly "the antlered one / the head in the woods" is fine. In the CSV the <code>en</code>/<code>zh_TW</code>/<code>pl</code>/<code>ru</code>/<code>uk</code> columns all read <code>DearHead</code> (placeholder); <code>zh_CN</code> reads 老雄鹿 ("old stag").</dd>
+          <dt>Personality</dt><dd>Prophetic, mournful, knowing, a little smug, quietly desperate. It has seen where this goes.</dd>
+          <dt>How they talk</dt><dd>
+            <p><strong>TWO registers:</strong></p>
+            <ol>
+              <li><strong>The night prophecies (Day 1–4):</strong> <strong>rhymed verse</strong>, couplets, folk-incantation rhythm, archaic and ominous. <em>The hardest thing in the game to translate.</em> Do the best you can. If you can rhyme and scan while keeping the gist — perfect. If you must choose, <strong>keep the meaning and the imagery</strong> (running to the dung and straw to find a "clean" life; the tendrils that will catch you; hiding your face in your hands; tomorrow not waiting for you under a jar lid). A rhyme that forces nonsense is worse than clean free verse.</li>
+              <li><strong>The ending monologue + the bad-ending taunt:</strong> switches to <strong>plain, tired prose.</strong> This shift is <strong>on purpose</strong> — keep it. Suddenly it's just a person talking.</li>
+            </ol>
+          </dd>
+          <dt>Verbal tics</dt><dd>Uses <code class="tok">:Ddd</code> (only this character). In the ending, casual asides land next to heavy admissions.</dd>
+          <dt>"Therapy speak"</dt><dd>In the ending the deer talks like a present-day person who's done some inner work — it <em>names emotions plainly</em> ("I live in unease", "I'm afraid of change, of otherness"), talks about "being true to yourself", "change", "your place in history". A 1978 Czech farmer would not talk this way. The anachronism is deliberate: it's the player's conscience / the director, so it's allowed to sound like now. <strong>Keep that contemporary, emotionally-literate vocabulary</strong> — don't age it down, don't inflate it into clinical jargon.</dd>
+          <dt>Represents</dt><dd>Conscience; the refusal of catharsis; me.</dd>
+          <dt><span class="k">Keep</span> / <span class="f">flex</span></dt><dd><span class="k">Keep</span> the two-register split, the sense of <strong>guilt and hiding from the world</strong>, the direct address to "you", the genderlessness. <span class="f">Flex</span> exact rhymes and images if a swap rhymes better and stays in the same emotional key.</dd>
+        </dl>
+        <div class="lines">
+          <p class="line"><span class="role">prophecy</span>"You run to the dung, the straw, the mud —<code class="tok">[input]</code> chasing some cleaner way to live.<code class="tok">[input]</code> But soon the vines will catch you,<code class="tok">[input]</code> that wretched life of yours."<span class="intent">→ you fled to the farm to feel clean; it won't save you.</span></p>
+          <p class="line"><span class="role">prophecy</span>"Under a jar's lid, no tomorrow waits for you,<code class="tok">[input]</code> in fleeing, you betray the human in you too."<span class="intent">→ preserving = betraying yourself.</span></p>
+          <p class="line"><span class="role">ending (prose)</span>"I'm afraid of change, of being different, afraid that I can't do anything, that I won't change anything anymore… But I'm utterly terrified that we'll stay just like this."</p>
+          <p class="line"><span class="role">bad-ending taunt (mock-cheerful)</span>"Yay, we did it! We really got ourselves in a pickle. The soil's as sour as vinegar now and nothing's ever sprouting in it again, but who needs that anyway, right?"</p>
+        </div>
+      </article>
+
+      <h3>The five pickles — shared notes</h3>
+      <p>They are <strong>allegorical mirrors</strong> — each one is a way real people avoid responsibility. The whole game is a question about <strong>hiding and responsibility</strong>, and these five are the answers people have actually given me. They know, on some level, that they're doomed.</p>
+
+      <h4>Naming the pickles — brief</h4>
+      <p><strong>The names are placeholders and not good enough — in Czech <em>and</em> in English.</strong> Treat them as yours to change. When you name a pickle:</p>
+      <ul class="plain">
+        <li><strong>Keep the idea, not the word.</strong> Each name should nod to (a) <strong>pickling / brine / souring / vinegar / a jar ingredient</strong>, and (b) <strong>the archetype</strong>. The Czech names lean on a pun that mostly won't carry — don't force the pun, carry the <em>idea</em>.</li>
+        <li>A name that reads as an actual <strong>name</strong> beats a bare common noun.</li>
+        <li><strong>Double meanings are gold.</strong> Example: English "Relish" = a sweet pickled condiment <strong>and</strong> "to relish / take delight in" — ideal for the denier who delights in the catastrophe.</li>
+        <li>If nothing pickle-ish works for one of them, an archetype-based name is an acceptable fallback.</li>
+        <li><strong>Tell JamiieDev what you chose</strong> so the five stay a coherent set in your language.</li>
+      </ul>
+
+      <div class="tbl-scroll"><table class="tbl">
+        <tr><th>CZ name</th><th>The pun that won't carry</th><th>Archetype</th><th>Idea to keep in your name</th></tr>
+        <tr><td>Sladuše</td><td class="wrap-cell"><em>sladká</em> = sweet; also "a sweet old dear"</td><td class="wrap-cell">the doting denier</td><td class="wrap-cell">sweetness / a sweet pickle / delight</td></tr>
+        <tr><td>Cibulák</td><td class="wrap-cell"><em>cibule</em> = onion → someone who cries easily</td><td class="wrap-cell">the crybaby complainer</td><td class="wrap-cell">onion / tears / brine / whining</td></tr>
+        <tr><td>Kvašák</td><td class="wrap-cell"><em>kvasit</em> = ferment → a fully-fermented sourpuss</td><td class="wrap-cell">the fatalist</td><td class="wrap-cell">sour / over-fermented / brine gone flat</td></tr>
+        <tr><td>Octa</td><td class="wrap-cell"><em>ocet</em> = vinegar</td><td class="wrap-cell">the (too-late) rage</td><td class="wrap-cell">vinegar / acid / sharpness / bite</td></tr>
+        <tr><td>Okurkoyin</td><td class="wrap-cell">okurka + a gargoyle-ish ending</td><td class="wrap-cell">the broken one</td><td class="wrap-cell">pickle + monster / gremlin / gargoyle</td></tr>
+      </table></div>
+      <p>Current CSV placeholders (English): <strong>Sweetie · Onion · Sourpuss · Vinegar · Picklegoyle</strong>. The cards below repeat one working name each — same placeholder status.</p>
+
+      <article class="card" style="--accent:#c7ff00">
+        <header>
+          <h3>Sweetie</h3>
+          <span class="tags">the doting denier · <strong>feminine</strong> · style: apologist · <code>cucumber_pleaser</code></span>
+        </header>
+        <dl>
+          <dt>Who / represents</dt><dd>The person who <strong>overlooks the destruction and finds beauty anyway.</strong> Everything is fine. The squirrels are just hungry. The dust is like sugar on a cake. Denial dressed as gentleness and wisdom.</dd>
+          <dt>Name</dt><dd>Sladuše ← <em>sladká</em> = sweet. A sweet-pickle / a sweet old lady. → working name <strong>Sweetie</strong>.</dd>
+          <dt>Personality</dt><dd>Warm, folksy, grandmotherly, relentlessly positive, quietly delusional.</dd>
+          <dt>How they talk</dt><dd>Soft, cozy, a little old-fashioned. Calls people "dear". Reaches for homey similes (baking, her grandmother's garden). Reframes every bad thing as charming.</dd>
+          <dt>Talks about</dt><dd>The pretty light; the squirrels' feelings; the "festive" dust; nature "dressing up" for something big.</dd>
+          <dt><span class="k">Keep</span> / <span class="f">flex</span></dt><dd><span class="k">Keep</span> the gentleness-as-denial and the granny register. <span class="f">Flex</span> the specific folksy images — swap in your culture's cozy-grandma references.</dd>
+        </dl>
+        <div class="lines">
+          <p class="line">"They were just terribly hungry, poor things.<code class="tok">[input]</code> It's not their fault, the forest just didn't give them enough nuts."</p>
+          <p class="line">"When they bit me,<code class="tok">[input]</code> I just took it as their way of communicating. Physical contact is probably just how they express love, you know?"</p>
+          <p class="line">"It does make my skin crawl a little,<code class="tok">[input]</code> but that's just the festive touch."</p>
+          <p class="line"><span class="role">jar-in</span>"Every vegetable collapses in the end and melts into one unreadable, scalding whole. I'll just watch quietly now, as our farm too becomes a fraction of this broth."<span class="intent">→ her denial finally curdles into eerie acceptance.</span></p>
+        </div>
+      </article>
+
+      <article class="card" style="--accent:#7d7bd4">
+        <header>
+          <h3>Onion</h3>
+          <span class="tags">the impotent complainer · <strong>masculine</strong> · <code>cucumber_bitcher</code></span>
+        </header>
+        <dl>
+          <dt>Who / represents</dt><dd>The <strong>impotent complainer.</strong> Loudly agrees something must be done, then explains why it can't be him, then complains about that. Outrage as a substitute for action.</dd>
+          <dt>Name</dt><dd>Cibulák ← <em>cibule</em> = onion; colloquially a <strong>crybaby</strong> (onion = makes you cry). → working name <strong>Onion</strong> (weaker than the Czech pun — if your language has an "onion = crybaby" link, lean on it).</dd>
+          <dt>Personality</dt><dd>Indignant, self-pitying, theatrical, fundamentally passive.</dd>
+          <dt>How they talk</dt><dd>Rant rhythm. Rhetorical questions he immediately answers. ALL-CAPS on the word he's outraged by. Keeps coming back to the fact that he has <strong>no legs, no fingers</strong> as his excuse.</dd>
+          <dt>Talks about</dt><dd>The squirrels ("somebody should DO something"); the mining ("an absolute CATASTROPHE"); his own helplessness, which he treats as a tragic condition.</dd>
+          <dt><span class="k">Keep</span> / <span class="f">flex</span></dt><dd><span class="k">Keep</span> the "I would, but I physically can't, so I won't" logic and the caps-lock outrage. <span class="f">Flex</span> the phrasing.</dd>
+        </dl>
+        <div class="lines">
+          <p class="line">"Somebody should DO something about those squirrels! Somebody really should!<code class="tok">[input]</code> But who?<code class="tok">[input]</code> Me?<code class="tok">[input]</code> I'm a CUCUMBER."</p>
+          <p class="line">"This mining, it's an outrage.<code class="tok">[input]</code> An absolute CATASTROPHE. And nobody lifts a finger!<code class="tok">[input]</code> Well, I'd lift a finger,<code class="tok">[input]</code> if I had any. But I don't.<code class="tok">[input]</code> So I won't."</p>
+          <p class="line">"And that's the tragedy of it, isn't it?<code class="tok">[input]</code> The utter HELPLESSNESS of the cucumber condition."</p>
+          <p class="line"><span class="role">jar-in</span>"A jar?? A total failure of the cucumber apparatus.<code class="tok">[input]</code> I refuse to take any further part in this culinary fascism!"</p>
+        </div>
+      </article>
+
+      <article class="card" style="--accent:#dfff54">
+        <header>
+          <h3>Sourpuss</h3>
+          <span class="tags">the fatalist · <strong>masculine</strong> · heavy obecná čeština · <code>cucumber_doomer</code></span>
+        </header>
+        <dl>
+          <dt>Who / represents</dt><dd>The <strong>fatalist.</strong> "I told you so" + "that's just life, get used to it." Has given up on any repair being possible, and actively tries to pull others down to his level so his apathy feels normal.</dd>
+          <dt>Name</dt><dd>Kvašák ← <em>kvasit</em> = to ferment; a fully-fermented sourpuss. → working name <strong>Sourpuss</strong>.</dd>
+          <dt>Personality</dt><dd>Bitter, tired, smug about having predicted it, mildly hostile if pushed.</dd>
+          <dt>How they talk</dt><dd>The <strong>sloppiest</strong> register in the game — casual, slurred, grammatically loose. Verbal tic <code>voe</code> (a filler — keep as a casual tic, not an insult). Ends thoughts with a resigned "no" / "že" ("…anyway, y'know", "…right"). Little "hehe".</dd>
+          <dt>Talks about</dt><dd>How he knew the squirrels would take them; how they should've listened to him; how it'll be a lake here soon from the mining; how it was nicer before; "that's life, get used to it."</dd>
+          <dt><span class="k">Keep</span> / <span class="f">flex</span></dt><dd><span class="k">Keep</span> the sloppy register (use your language's real casual speech), the smugness, the "get used to it" fatalism, the deflating "hehe". <span class="f">Flex</span> everything else — a great character to let breathe in your own vernacular.</dd>
+        </dl>
+        <div class="lines">
+          <p class="line">"Yeah, I knew they'd steal us,<code class="tok">[input]</code> told you, man. Yeah well, if they'd listened to me, it'd all be different now, right."</p>
+          <p class="line">"Dude, they'll mine a bit longer and there'll be a lake here too. What can you do, it was nicer here before anyway.<code class="tok">[input]</code> But what're you gonna do about it, right,<code class="tok">[input]</code> that's life, get used to it. hehe"</p>
+          <p class="line"><span class="role">pushed</span>"What did I even do?<code class="tok">[input]</code> What was I even supposed to do?!<code class="tok">[input]</code> Hey, what's it to you! Mind your own business, alright?<code class="tok">[input]</code> And leave me alone, man."</p>
+        </div>
+      </article>
+
+      <article class="card" style="--accent:#ff1742">
+        <header>
+          <h3>Vinegar</h3>
+          <span class="tags">the (too-late) rage · <strong>feminine</strong> · style: hater · <code>cucumber_angry</code></span>
+        </header>
+        <dl>
+          <dt>Who / represents</dt><dd><strong>Rage that shows up too late.</strong> She fully understands the situation and wants to <em>act</em> — but the fury only arrives <em>after</em> the loss, never as prevention. Her self-blame ("I did nothing") flips into aggression.</dd>
+          <dt>Name</dt><dd>Octa ← <em>ocet</em> = vinegar. The acid, the bite. → working name <strong>Vinegar</strong>.</dd>
+          <dt>Personality</dt><dd>Furious, defiant, vengeful, a bit unhinged, weirdly motivational.</dd>
+          <dt>How they talk</dt><dd>Violent imagery, ALL-CAPS, threats she can't carry out (she's a cucumber). Short hard bursts.</dd>
+          <dt>Talks about</dt><dd>What she'll do to the squirrel (roots into its face, ferment in its stomach, claw out); how doing NOTHING was her mistake; how next time she'll be so <em>alive</em> even the rot won't want her.</dd>
+          <dt><span class="k">Keep</span> / <span class="f">flex</span></dt><dd><span class="k">Keep</span> the "too late", the self-blame→fury turn, the caps, the grotesque revenge fantasy. <span class="f">Flex</span> the exact threats — make them vivid in your language.</dd>
+        </dl>
+        <div class="lines">
+          <p class="line">"I'll plant my roots straight into that squirrel's FACE! I'll ferment inside her STOMACH!<code class="tok">[input]</code> I'll claw my way out and chop her to SMITHEREENS."</p>
+          <p class="line">"What did I do?<code class="tok">[input]</code> Nothing.<code class="tok">[input]</code> They were stealing the ground out from under my stems, and what did I do? I did NOTHING, and that was my mistake."</p>
+          <p class="line">"Next time,<code class="tok">[input]</code> next time I'll do something.<code class="tok">[input]</code> Next time I'll be so alive that even the rot won't want me."</p>
+        </div>
+      </article>
+
+      <article class="card" style="--accent:#00dd53">
+        <header>
+          <h3>Picklegoyle</h3>
+          <span class="tags">the broken one · gender: n/a · <code>cucumber_freak</code></span>
+        </header>
+        <dl>
+          <dt>Who / represents</dt><dd>The one who has <strong>completely broken.</strong> No coherent worldview left — just noise. (What's left when none of the coping strategies work.)</dd>
+          <dt>Name</dt><dd>Okurkoyin ← okurka + a gargoyle-ish suffix. → working name <strong>Picklegoyle</strong>.</dd>
+          <dt>How they talk</dt><dd>Only <code>RERO-RERO-RERO</code> and <code>LELE-LELE</code>. This is a <strong>JoJo's Bizarre Adventure</strong> reference (the "rerorero" tongue meme) — an intentional otaku in-joke. <strong>Keep the syllables exactly as written</strong> (<code>RERO-</code>, <code>LELE-</code>), same hyphens, same <code class="tok">[input]</code> beats. Do not localize them into native-sounding gibberish — the point is that anime fans recognize it.</dd>
+        </dl>
+        <div class="lines">
+          <p class="line">"RERO-<code class="tok">[input]</code>RERO-<code class="tok">[input]</code>RERO-<code class="tok">[input]</code>RERO-<code class="tok">[input]</code>RERO-<code class="tok">[input]</code>RERO-RERO"</p>
+        </div>
+      </article>
+
+      <article class="card" style="--accent:#8bc34a">
+        <header>
+          <h3>The Friend</h3>
+          <span class="tags">the loved one · genderless · display name "Buddyship :)" · <code>friend</code></span>
+        </header>
+        <dl>
+          <dt>Who</dt><dd>The person whose farm it is. They leave for the doctor on Day 1 and (later) die. You never learn their relationship to the player — friend? partner? sibling? — <strong>on purpose.</strong></dd>
+          <dt>Gender</dt><dd><strong>BOTH the friend and the player are genderless.</strong> The player must be able to project whoever they want onto both. In your language: <strong>no gendered adjectives, no gendered past-tense verbs, no pet names that imply a specific relationship.</strong> If your grammar forces a choice and you truly cannot phrase around it, use <strong>feminine</strong> as the fallback (§10).</dd>
+          <dt>Display name</dt><dd>The Czech "Kámošstvo :)" is a deliberately odd, warm, un-gendered collective-ish word. English uses "Buddyship :)". Aim for something <strong>fond, slightly silly, and relationship-neutral</strong> in your language. Keep the <code class="tok">:)</code>.</dd>
+          <dt>How they talk</dt><dd>Cheerful, cutesy, casual. Contractions, little sign-offs ("Heya", "Thanks ^^"). Brief. Warm.</dd>
+          <dt>Appears</dt><dd>Only once (the goodbye note). Never again.</dd>
+        </dl>
+        <div class="lines">
+          <p class="line">"Heya,<code class="tok">[input]</code> I need to pop over to the city for a few days for a check-up."</p>
+          <p class="line">"Plant two dozen cucumbers before I get back, please. Thanks ^^"</p>
+        </div>
+      </article>
+
+      <article class="card" style="--accent:#54ffea">
+        <header>
+          <h3>The Nurse</h3>
+          <span class="tags">the phone voice · formal "you" · display name "Nurse" · <code>nurse_char</code></span>
+        </header>
+        <dl>
+          <dt>Who</dt><dd>The voice on the phone when the player calls the hospital / clinic. The player can keep calling across the years.</dd>
+          <dt>Name</dt><dd>The Czech "Sestřička" is the affectionate diminutive Czechs use for nurses (literally "little sister"). English "Nurse" loses the warmth — that's acceptable. <strong>If your language has a warm / diminutive form for "nurse", use it.</strong></dd>
+          <dt>How they talk</dt><dd>Polite, institutional, <strong>formal "you"</strong> (§10 — always the V-form). Soft diminutives, euphemism.</dd>
+          <dt>The two calls</dt><dd>
+            <p><strong>First call</strong> — kind, gentle, euphemistic. Doesn't want to alarm you.</p>
+            <p><strong>Second call</strong> (a year+ later, if the player keeps calling) — <strong>exhausted, blunt, done being gentle.</strong></p>
+          </dd>
+          <dt><span class="k">Keep</span> / <span class="f">flex</span></dt><dd><span class="k">Keep</span> the formality, the euphemism→bluntness shift between calls, the tired humanity of the second one.</dd>
+        </dl>
+        <div class="lines">
+          <p class="line"><span class="role">first call</span>"Hello? Oh, it's you.<code class="tok">[input]</code> They'll have to stay with us a few more days, but they'll be right as rain in no time. <code class="tok">\:)</code>"</p>
+          <p class="line"><span class="role">second call</span>"Hello? Oh. You again.<code class="tok">[input]</code> You can't keep calling here year after year — they're not coming back.<code class="tok">[input]</code> Give me a break, would you?"</p>
+        </div>
+      </article>
+
+      <article class="card" style="--accent:#ececec">
+        <header>
+          <h3>The Player</h3>
+          <span class="tags">the mutters · genderless · one voice · <code>player_anyone</code> / <code>player_you</code> / <code>player_you_and_me</code></span>
+        </header>
+        <dl>
+          <dt>Who</dt><dd>The silent protagonist's occasional out-loud mutters. Anonymous, genderless, no stated past. Three "voices" exist to <strong>blur the line between the player and the player-character</strong> — you do <strong>not</strong> need to make them sound different from one another. Translate all three as <strong>one voice</strong> and lock it.</dd>
+          <dt>How they talk</dt><dd><strong>Generic</strong> — no strong regional flavor — but full of <strong>silly little exclamations and old-timey interjections.</strong> This is the charm of the game; lean in.</dd>
+          <dt>Exclamation set</dt><dd>Build your own equivalents and reuse them. "Panenko skákavá" → <strong>"Good gracious" / "Goodness me" / "Oh my stars"</strong>. "Šmarja" → <strong>"Oh geez" / "Jeepers" / "Heavens"</strong>.</dd>
+        </dl>
+        <div class="lines">
+          <p class="line">"Good gracious, they're stealing our cucumbers <code class="tok">:0</code>"</p>
+          <p class="line">"I'll find those cucumbers today, but first I'd better pickle what's left."</p>
+          <p class="line">"Oh geez, what's that rooster doing? And where are the chickens?"</p>
+          <p class="line"><span class="role">muttered UI</span>"Can't carry any more <code class="tok">:/</code>" · "Can't get in without a key <code class="tok">:/</code>"</p>
+        </div>
+      </article>
+    </section>
+
+    <section id="s10">
+      <h2>10 · Language-specific notes</h2>
+
+      <h3>Formal / informal "you" (T/V)</h3>
+      <div class="tbl-scroll"><table class="tbl">
+        <tr><th>Speaker → Listener</th><th>Form</th></tr>
+        <tr><td class="wrap-cell">Nurse → player (both calls)</td><td><strong>Formal (V)</strong> — always</td></tr>
+        <tr><td class="wrap-cell">Friend → player</td><td><strong>Informal (T)</strong> — close, warm</td></tr>
+        <tr><td class="wrap-cell">DearHead → player</td><td><strong>Informal (T)</strong> — it's the player's own conscience</td></tr>
+        <tr><td class="wrap-cell">Pickles → player</td><td><strong>Informal (T)</strong> — rude / casual</td></tr>
+        <tr><td class="wrap-cell">Player → self (mutters)</td><td>n/a</td></tr>
+      </table></div>
+
+      <h3>Genderless player &amp; friend</h3>
+      <p>Czech, Polish, Russian, Ukrainian all force gender on past-tense verbs and adjectives when someone talks about themselves or is addressed. <strong>Phrase around it</strong> wherever possible (nominal constructions, present tense, plurals, imperatives). If you are genuinely stuck on a line, <strong>default to feminine</strong> — but treat that as a last resort and flag the line to JamiieDev.</p>
+
+      <h3>Line length</h3>
+      <p>Match roughly the <strong>character count of the English</strong> line. Dialogue boxes and HUD prompts don't grow. One sentence stays one sentence.</p>
+
+      <h3>Per language</h3>
+      <ul class="plain">
+        <li><strong>Shipping languages:</strong> Czech, English, 简体中文 (<code>zh_CN</code>), 繁體中文 (<code>zh_TW</code>), Русский (<code>ru</code>), Українська (<code>uk</code>), Polski (<code>pl</code>). No German — the <code>de</code> column was removed.</li>
+        <li><strong>中文:</strong> the <code>zh_TW</code> column is seeded from English; you can cross-reference the finished <code>zh_CN</code> column and adjust for Taiwan characters / vocabulary. Keep emoticons and <code>RERO</code>/<code>LELE</code> in Latin letters.</li>
+        <li><strong>ru / uk / pl:</strong> columns currently hold English placeholder text. Watch the genderless-player rule above.</li>
+      </ul>
+    </section>
+
+    <section id="s11">
+      <h2>11 · Workflow &amp; reference</h2>
+      <ul class="plain">
+        <li><strong>What you get:</strong> <code>translations.csv</code> (UI + notes), <code>dialogic_timeline_translations.csv</code> (all spoken dialogue), <code>dialogic_character_translations.csv</code> (character display names). Edit <strong>your column only</strong>.</li>
+        <li><strong>Gameplay video</strong> — watch it to see context, pacing, how lines are delivered.</li>
+        <li><strong>History source texts:</strong> the long notes are already in <code>translations.csv</code> (keys starting <code>NOTE_</code>).</li>
+        <li><strong>The explication PDFs</strong> (Czech) — director's statement, longer form.</li>
+        <li><strong>Questions:</strong> text JamiieDev. Especially flag: forced-gender lines, jokes you rewrote, anything where the emoticon / tag rules fought your grammar.</li>
+      </ul>
+    </section>
+
+    <section id="s12">
+      <h2>12 · Open items (dev)</h2>
+      <ul class="checklist">
+        <li class="done"><strong>Language columns restructured:</strong> dropped <code>de</code>, added <code>zh_TW</code> (seeded from English) across all three CSVs, the <code>*.csv.import</code> files, <code>project.godot</code>, and <code>SettingsManager.LOCALES</code>. Reload the project in Godot so it reimports and generates the <code>*.zh_TW.translation</code> binaries.</li>
+        <li class="todo"><strong>Pickle names</strong> — Czech and English names are placeholders; naming brief is in §9. Current CSV (English): Sweetie / Onion / Sourpuss / Vinegar / Picklegoyle.</li>
+        <li class="done"><code>GAME_TITLE</code> → <code>OKUREK</code> (was "Spooky Pickle").</li>
+        <li class="done"><code>INTERACTABLE_CUCUMBER_TALKING</code> EN → "Pickle".</li>
+        <li class="done"><strong>Rot named "the Spoil"</strong> (§7). Existing dialogue that uses "rot" as a common noun is fine.</li>
+        <li class="done"><strong>Player voices kept</strong>, not cut — §9.</li>
+        <li class="done"><strong>Day-5 ending wipes the save</strong> — confirmed, in §4.</li>
+        <li class="done">Missing / broken EN cells filled: <code>Text/53, 54, 55, 64, 65, 66, 67, 68, 69, 6a, 6b</code>.</li>
+        <li class="todo"><strong>Next:</strong> polish pass over <em>all</em> remaining English dialogue before translators start.</li>
+        <li class="todo">Minor: what distinguishes <code>player_anyone</code> / <code>player_you</code> / <code>player_you_and_me</code> in-fiction (no translation impact).</li>
+      </ul>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <div class="wrap">
+    O.K.U.R.E.K — Translation &amp; Localization Guide · <a href="/presskit/okurek/">Press kit</a> · <a href="https://store.steampowered.com/app/4735450/OKUREK/" target="_blank" rel="noopener">Steam</a> · <a href="/">jamiiedev.github.io</a><br />
+    Made by JamiieDev. This page is for translators — the English text is the pivot.
+  </div>
+</footer>
+
+<a href="#top" class="totop" aria-label="Back to top">↑</a>
+
+<script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('#toc-nav a'));
+  var map = {};
+  links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+  var sections = Array.prototype.slice.call(document.querySelectorAll('.content > section'));
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        links.forEach(function (l) { l.classList.remove('active'); });
+        var a = map[e.target.id];
+        if (a) a.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-72px 0px -60% 0px', threshold: 0 });
+  sections.forEach(function (s) { io.observe(s); });
+
+  var totop = document.querySelector('.totop');
+  window.addEventListener('scroll', function () {
+    totop.classList.toggle('show', window.scrollY > 700);
+  }, { passive: true });
+
+  // open the spoiler section automatically if the page is loaded with #s4
+  if (location.hash === '#s4') {
+    var d = document.querySelector('#s4 details.spoiler');
+    if (d) d.open = true;
+  }
+})();
+</script>
+
+</body>
+</html>
