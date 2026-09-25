@@ -1,4 +1,4 @@
-OKUREK — FACT SHEET
+OKUREK - FACT SHEET
 ====================
 
 Title
@@ -6,7 +6,7 @@ Title
     "okurek" is Czech for "of cucumbers"
 
 Developer
-    JamiieDev — solo developer, Prague, Czech Republic
+    JamiieDev - solo developer, Prague, Czech Republic
     Began as a klauzura (semester) project at FAMU
     (Film and TV School of the Academy of Performing Arts), Prague
 
@@ -26,7 +26,7 @@ Players
     Single-player
 
 Playtime
-    60–90 minutes — designed for one sitting
+    60-90 minutes - designed for one sitting
 
 Languages
     English, Czech, German, Russian, Polish, Simplified Chinese
@@ -39,7 +39,7 @@ Genre
 
 Setting
     An isolated homestead in the sandstone hills of Czech Switzerland
-    (České Švýcarsko), North Bohemia, 1980s — the "Black Triangle",
+    (České Švýcarsko), North Bohemia, 1980s - the "Black Triangle",
     a region hollowed out by brown-coal strip mining and uranium
     leach-mining.
 
@@ -65,77 +65,74 @@ Social
 
 SHORT DESCRIPTION
 -----------------
-Tend the farm, the chickens, the grieving jars. The trees murmur while the
-cancer grows with every passing day. OKUREK is a cozy-pickle-horror
-experience set in the rotting mountains of Czech Switzerland. Preserve what
-you couldn't save.
+Tend the farm, the chickens, and the grieving jars. OKUREK is a first-person
+cozy pickle horror game set in the rotting mountains of Czech Switzerland.
+It acts as a conscious subversion of the escapism found in typical cozy
+farming games. Preserve what you couldn't save.
 
 
 DESCRIPTION
 -----------
-Someone dear to you had to leave in a hurry. There was a note on the kitchen
-table: take care of the cucumbers — you know how important they are to me.
-Fix the broken bench when you have time. I want to sit there when I get back.
+In OKUREK, you arrive at the farm of a dying friend with a simple request:
+take care of the cucumbers, and fix the broken bench. You plant, you water,
+you pickle. The routine is meant to keep you busy while dealing with the grief.
 
-You arrive to golden autumn light. Falling leaves. A coat still on the hook.
-A coffee cup in the sink. Mining towers on the horizon, half-swallowed by
-haze.
+But the land around you is sick. Set against the backdrop of real-life coal
+mining and uranium leaching in North Bohemia, a geometric, pulsing rot creeps
+across your plots every night. You cannot stop it, you can only endure it and
+decide what to do with what is left. Your only company are the pickled
+cucumbers on the kitchen shelf, who have plenty of opinions about the situation,
+and a deer at the edge of the woods that speaks only in rhyme.
 
-You plant. You water. You pickle. You keep busy. The farm needs tending.
-There is always something that needs tending. That is the point.
-
-But something gray and fleshy is growing where it shouldn't. And every
-morning, there is more of it.
-
-Over four autumn days you work a real farming routine while a geometric,
-pulsing rot creeps across the land between every dawn. You cannot stop it —
-only witness it, endure it, and decide what to do with what's left. On the
-kitchen shelf, the pickled cucumbers have opinions about all of this. So does
-the deer at the edge of the woods, who only speaks in rhyme.
-
-The land was already sick when you got here. Decades of mining ate the ground
-out from under the valley; the creek runs the colour of rust. The gray rot in
-your plots is just the newest wrong thing. OKUREK holds two decays side by
-side — one personal, one industrial — and asks what you owe a place, a
-person, and a world you can't fix by tending your own small garden.
+The game holds two decays side by side: a deeply personal loss, and an
+industrial exploitation of the land. OKUREK is a conscious critique and
+subversion of the cozy farming genre. Instead of offering an escapist fantasy
+where hard work fixes everything, it asks what you owe a place and a person
+when tending your own small garden is not enough to stop the rot.
 
 
 FEATURES
 --------
-- A real daily farming loop — plow, plant, water, harvest cucumbers, collect
+- A real daily farming loop - plow, plant, water, harvest cucumbers, collect
   eggs, seal pickling jars. Repetitive on purpose. Routine is grounding;
   watching it break is the horror.
-- The Rot — a faceted, breathing corruption that spreads every night. Scrape
+- The Rot - a faceted, breathing corruption that spreads every night. Scrape
   it away and it comes back stronger. Not a puzzle. Something to endure.
-- Talking pickles — the sealed jars on your shelf won't shut up. Each one has
+- Talking pickles - the sealed jars on your shelf won't shut up. Each one has
   a different philosophy of helplessness: the ranter, the denier, the stoic,
   the complainer, the philosopher, the one who just screams.
 - A deer that speaks in rhyme and knows more than it will say plainly.
-- Two concurrent decays — one personal, one industrial. The valley was being
+- Two concurrent decays - one personal, one industrial. The valley was being
   consumed before you arrived.
-- Two endings — one about preservation, one about acceptance.
+- Two endings - one about preservation, one about acceptance.
 - No death screen, no fail state. This is a story about inevitability, not
   skill.
 - A boss fight against a car-sized corrupted cucumber. It earned it.
 - PS1-era low-poly look with a custom vertex-jitter "stop-motion" shader that
-  makes the whole world tremble like it's alive — except the dead things,
+  makes the whole world tremble like it's alive - except the dead things,
   which don't move at all.
-- One 60–90 minute sitting. No grind, no save-scumming.
+- One 60-90 minute sitting. No grind, no save-scumming.
 
 
 HISTORY
 -------
-OKUREK started from something small and stupid: the developer likes pickles
-and canning jars, and wanted to make a game about growing cucumbers and
-keeping chickens. That cozy premise became a vehicle for two heavier subjects
-— the death of someone close, and the systemic poisoning of North Bohemia
-under 1980s brown-coal and uranium extraction.
+I am currently developing OKUREK as part of my Master's studies in Game Design
+at FAMU in Prague. My previous game projects have received awards and funding
+from the PPF Foundation, and I wanted to explore something deeply personal
+with this game.
 
-It is built solo in Godot and began as a klauzura (semester) project at FAMU
-in Prague. Period detail was researched from archival photographs of the
-leach-mining fields and consulted with a regional specialist for historical
-and environmental authenticity; the industrial structures in the game are an
-artistic interpretation where documentation no longer exists.
+The premise started simple enough (I just really like pickles and chickens),
+but it quickly evolved into a vehicle for two heavier subjects: the death of
+someone close, and the systemic poisoning of the environment under 1980s
+resource extraction.
+
+I grew up in the Karviná region, an area heavily exploited for its coal.
+The feeling of pervasive helplessness in OKUREK doesn't just come from
+theoretical research about North Bohemian uranium mining; it comes from a
+lived experience of growing up in a mining region. Period details were
+researched from archival photographs and checked with a regional specialist,
+while the industrial structures in the game are an artistic interpretation
+of documentation that no longer exists.
 
 Cozy horror inspired by: Color Out of Space, Annihilation, No One Lives Under
 the Lighthouse.
@@ -146,8 +143,8 @@ Stapler, Anatomy.
 CREDITS
 -------
 Created by JamiieDev
-Game design consultation — Michal Berlinger
-Environmental & historical consultation — Monika Kurešová
+Game design consultation - Michal Berlinger
+Environmental & historical consultation - Monika Kurešová
 Playtesting thanks to the FAMU community
 Made at FAMU, Prague
 
@@ -166,5 +163,5 @@ MEDIA IN THIS KIT
 PERMISSIONS
 -----------
 You have blanket permission to use OKUREK's name, logo, screenshots, key art
-and video captured from the game in articles, reviews, videos and streams —
+and video captured from the game in articles, reviews, videos and streams -
 including monetised ones. No need to ask.
